@@ -138,7 +138,9 @@ dafuweng/
 
 ## 🎮 游戏截图
 
-（这里可以添加游戏截图）
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
 
 ## 🤝 贡献
 
