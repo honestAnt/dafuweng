@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>糖果大富翁 - 儿童版</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 游戏开始界面 -->
+    <div id="start-screen" class="start-screen">
+        <div class="start-content">
+            <h1>🍭 糖果大富翁 🍬</h1>
+            <p>选择玩家人数开始游戏</p>
+            <div class="player-selection">
+                <button class="player-count-btn" data-count="2">2人游戏</button>
+                <button class="player-count-btn" data-count="3">3人游戏</button>
+                <button class="player-count-btn" data-count="4">4人游戏</button>
+                <button class="player-count-btn" data-count="5">5人游戏</button>
+            </div>
+            <div class="available-characters">
+                <h3>可选角色（点击选择）</h3>
+                <div class="character-list" id="character-list">
+                    <div class="character" data-index="0">🐰 小兔子</div>
+                    <div class="character" data-index="1">🐻 小熊</div>
+                    <div class="character" data-index="2">🐱 小猫咪</div>
+                    <div class="character" data-index="3">🐶 小狗狗</div>
+                    <div class="character" data-index="4">🐼 小熊猫</div>
+                    <div class="character" data-index="5">🦊 小狐狸</div>
+                    <div class="character" data-index="6">🦁 小狮子</div>
+                    <div class="character" data-index="7">🐯 小老虎</div>
+                    <div class="character" data-index="8">🐸 小青蛙</div>
+                    <div class="character" data-index="9">🐢 小乌龟</div>
+                    <div class="character" data-index="10">🦈 小鲨鱼</div>
+                    <div class="character" data-index="11">🚗 小汽车</div>
+                    <div class="character" data-index="12">🚀 小火箭</div>
+                    <div class="character" data-index="13">⭐ 小星星</div>
+                    <div class="character" data-index="14">🌙 小月亮</div>
+                    <div class="character" data-index="15">🦸 奥特曼</div>
+                    <div class="character" data-index="16">🤖 小机器人</div>
+                    <div class="character" data-index="17">🦄 独角兽</div>
+                    <div class="character" data-index="18">🐲 小龙</div>
+                    <div class="character" data-index="19">🎈 小气球</div>
+                </div>
+                <div class="selected-characters">
+                    <h3>已选角色</h3>
+                    <div id="selected-characters-display"></div>
+                </div>
+                <button id="start-game-btn" class="start-game-btn">🎮 开始游戏</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 游戏主界面 -->
+    <div id="game-container" class="game-container" style="display: none;">
+        <div class="game-header">
+            <h1>🍭 糖果大富翁 🍬</h1>
+            <div class="all-players-info">
+                <h3>所有玩家金币</h3>
+                <div id="players-money-display"></div>
+            </div>
+        </div>
+
+        <div class="game-layout">
+            <div class="game-board">
+                <!-- 游戏棋盘将通过JavaScript动态生成 -->
+            </div>
+
+            <div class="game-center">
+                <div class="current-player-info">
+                    <h3>当前玩家</h3>
+                    <div id="current-player">小兔子 🐰</div>
+                    <div id="player-money">金币: 1000</div>
+                </div>
+
+                <div class="dice-section">
+                    <div class="dice-display">
+                        <span>骰子点数: </span>
+                        <span id="dice-value">-</span>
+                    </div>
+                    <button id="roll-dice" class="big-dice-btn">🎲 掷骰子</button>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="buy-property">购买地产</button>
+                    <button id="end-turn">结束回合</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-log">
+            <h3>游戏日志</h3>
+            <div id="log-content">
+                <p>游戏开始！小兔子先行动。</p>
+            </div>
+        </div>
+
+        <div class="game-rules">
+            <h3>📖 游戏规则</h3>
+            <div class="rules-content">
+                <div class="rule-section">
+                    <h4>🎯 基本玩法</h4>
+                    <ul>
+                        <li>掷骰子移动，购买地产，收取租金</li>
+                        <li>金币用完的玩家出局，最后剩下的玩家获胜</li>
+                        <li>经过起点获得200金币奖励</li>
+                    </ul>
+                </div>
+                <div class="rule-section">
+                    <h4>🏠 地产系统</h4>
+                    <ul>
+                        <li>购买地产后可以收取租金</li>
+                        <li>租金根据地产价格计算</li>
+                        <li>经过自己的地产可以休息</li>
+                    </ul>
+                </div>
+                <div class="rule-section">
+                    <h4>⚠️ 陷阱格子</h4>
+                    <ul>
+                        <li>粘粘糖、酸柠檬等会扣除金币</li>
+                        <li>陷阱惩罚金额不等</li>
+                        <li>注意避开危险区域</li>
+                    </ul>
+                </div>
+                <div class="rule-section">
+                    <h4>🌤️ 天气系统</h4>
+                    <ul>
+                        <li>☀️ 烈日：停留1回合，失去50金币</li>
+                        <li>❄️ 风雪：后退3步，失去30金币</li>
+                        <li>🌧️ 暴雨：前进2步，获得20金币</li>
+                        <li>🌈 彩虹：随机传送，获得50金币</li>
+                    </ul>
+                </div>
+                <div class="rule-section">
+                    <h4>🏢 特殊建筑</h4>
+                    <ul>
+                        <li>🏦 银行：存钱生息，取钱获得利息</li>
+                        <li>🏢 监狱：停留2回合，无法移动</li>
+                        <li>🏥 医院：恢复100金币</li>
+                        <li>🎰 赌场：50%几率双倍或失去金币</li>
+                        <li>🎁 礼物屋：随机获得金币礼物</li>
+                        <li>🌀 传送门：随机传送到其他位置</li>
+                        <li>💎 宝藏岛：发现宝藏获得金币</li>
+                        <li>🧙 魔法屋：随机魔法效果</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
